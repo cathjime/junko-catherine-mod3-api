@@ -16,24 +16,20 @@ API_KEY = ""
 cuisines = [
   # 'american', #50
   # 'british', #24
-  # 'chinese', 
-  # 'eastern-european', #0
-  # 'european', #1
-  # 'french', #9
-  # 'german',
-  # 'greek',
-  # 'indian',
-  # 'irish', #9
-  # 'italian', #1
-  # 'japanese',
-  # 'korean',
-  # 'latin-american',
-  # 'mediterranean',
-  # 'mexican',
-  # 'middle%20eastern',
-  # 'southern',
-  # 'spanish',
-  # 'thai'
+  # 'chinese', #44
+  # 'french', #50
+  # 'german', #15
+  # 'greek', #24
+  # 'indian', #50
+  # 'irish', #22
+  # 'italian', #36
+  # 'japanese', #29
+  # 'korean', #25
+  # 'mexican', #10
+  # 'middle%20eastern', #10
+  # 'southern', #10
+  # 'spanish', #8
+  # 'thai', #10
 ]
 
 cuisines.each do |cuisine_row|
@@ -64,7 +60,7 @@ cuisines.each do |cuisine_row|
     ingredients_data.each do |ingredient_row|
       ingredient = Ingredient.find_or_create_by(name: ingredient_row["name"])
       amount = "#{ingredient_row['amount']['us']['value']} #{ingredient_row['amount']['us']['unit']}"
-      IngredientRecipe.create(recipe_id: recipe.id, ingredient_id: ingredient.id, amount: amount)
+      IngredientRecipe.find_or_create_by(recipe_id: recipe.id, ingredient_id: ingredient.id, amount: amount)
     end
   end
   puts "Cuisine #{cuisine_row} and #{Cuisine.find_by(name: cuisine_row).recipes.count} recipes created"
