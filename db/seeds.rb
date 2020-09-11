@@ -14,8 +14,8 @@ require 'rest-client'
 
 API_KEY = ""
 cuisines = [
-  # 'american', #0
-  # 'british',
+  # 'american', #50
+  # 'british', #24
   # 'chinese', 
   # 'eastern-european', #0
   # 'european', #1
@@ -38,7 +38,7 @@ cuisines = [
 
 cuisines.each do |cuisine_row|
   cuisine = Cuisine.find_or_create_by!(name: cuisine_row)
-  cuisine_url = "https://api.spoonacular.com/recipes/complexSearch?cuisine=#{cuisine_row}&apiKey=#{API_KEY}"
+  cuisine_url = "https://api.spoonacular.com/recipes/complexSearch?cuisine=#{cuisine_row}&apiKey=#{API_KEY}&number=50"
   cuisine_response = RestClient.get(cuisine_url)
   cuisine_data = JSON.parse(cuisine_response)["results"]
   
