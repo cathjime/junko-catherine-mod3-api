@@ -3,7 +3,7 @@ class Ingredient < ApplicationRecord
     has_many :recipes, through: :ingredient_recipes
 
     def dairy_free?
-        dairy_products = ['milk', 'yogurt', 'cream', 'butter', 'cheese', 'casein', 'custard', 'ice cream', 'feta']
+        dairy_products = ['milk', 'yogurt', 'cream', 'butter', 'cheese', 'casein', 'custard', 'ice cream', 'feta', 'parmesan']
         dairy_products.each do |dairy|
             return false if name.downcase.include?(dairy) 
         end
@@ -37,7 +37,7 @@ class Ingredient < ApplicationRecord
 
     
     def wheat_free?
-        wheat_products = ['flour', 'bread', 'cereal', 'pasta', 'spagetti', 'couscous', 'cracker', 'crouton', 'starch', 'wheat', 'bun', 'cake', 'pastry', 'dough']
+        wheat_products = ['flour', 'bread', 'cereal', 'pasta', 'spaghetti', 'couscous', 'cracker', 'crouton', 'starch', 'wheat', 'bun', 'cake', 'pastry', 'dough', 'penne', 'ramen', 'wonton', 'noodle', 'wrap']
         wheat_products.each do |product|
             return false if name.downcase.include?(product) 
         end
